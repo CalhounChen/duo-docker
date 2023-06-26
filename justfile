@@ -1,15 +1,26 @@
 set windows-shell:=['pwsh','-c']
+
+# set runner podman or docker
+RUNNER:="podman"
+
+# set image name to build
 IMAGE_NAME:="maskedzhang/milkv-duo"
 
 # show help info
 help:
 	just -l
-# build image from dockerfile
+
+# build image from Dockerfile
 build-image:
-	podman build -t {{IMAGE_NAME}} -f ./dockerfile
-# pull ubuntu:latest image
-pull:
-	podman pull ubuntu
-# run image buildt
+	{{RUNNER}} build -t {{IMAGE_NAME}} -f Dockerfile
+
+# pull image from docker.io [default: latest]
+pull-image:
+  {{RUNNER}} pull docker.io/maskedzhang/milkv-duo
+
+# show {{RUNNER}} version
+version:
+  {{RUNNER}} --version
+# run the image just built
 run:
-	podman run --name duo -it --privileged -w /root/ {{IMAGE_NAME}}
+	{{RUNNER}} run --privileged --name duo -it {{IMAGE_NAME}}
