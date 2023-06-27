@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
-LABEL maintainer="maskedzhang"
-LABEL version="0.1.3"
+LABEL maintainer="calhounchen"
+LABEL version="0.1.4"
 LABEL description="MilkV Duo burn image build environment on Ubuntu 22.04""
 
 

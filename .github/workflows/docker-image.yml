@@ -19,7 +19,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v4
       with:
-        images: maskedzhang/milkv-duo
+        images: calhounchen/milkv-duo
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
