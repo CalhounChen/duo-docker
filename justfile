@@ -16,11 +16,11 @@ build-image:
 
 # pull image from docker.io [default: latest]
 pull-image:
-  {{RUNNER}} pull docker.io/maskedzhang/milkv-duo
+	{{RUNNER}} pull docker.io/maskedzhang/milkv-duo
 
 # show {{RUNNER}} version
 version:
-  {{RUNNER}} --version
+	{{RUNNER}} --version
 # run the image just built
 run:
 	{{RUNNER}} run --privileged --name duo -it {{IMAGE_NAME}}
