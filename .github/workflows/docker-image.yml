@@ -1,17 +1,31 @@
 name: Docker Image CI
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    tags:
+      - 'v*'
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag maskzhang/milkv-duo:$(date +%s)
-    - name: Docker login
-      run: docker login --username=${{secrets.DOCKER_USERNAME}} --password=${{secrets.DOCKER_PASSWORD}}
-    - name: Push image to hub.docker.com
-      run: docker push maskedzhang/milkv-duo:0.1.2
+
+    - name: Docker Hub login
+      uses: docker/login-action@v2
+      with:
+        username: ${{secrets.DOCKERHUB_USERNAME}}
+        password: ${{secrets.DOCKERHUB_TOKEN}}
+
+    - name: Extract metadata (tags,labels) for Docker
+      id: meta
+      uses: docker/metadata-action@v2
+      with:
+        images: maskedzhang/milkv-duo
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: ${{steps.meta.outputs.tags}}
+        labels: ${{steps.meta.outputs.labels}}
