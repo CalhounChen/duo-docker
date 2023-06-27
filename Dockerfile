@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 LABEL maintainer="calhounchen"
 LABEL version="0.1.4"
-LABEL description="MilkV Duo burn image build environment on Ubuntu 22.04""
+LABEL description="MilkV Duo burn image build environment on Ubuntu 22.04"
 
 
 WORKDIR /root/
