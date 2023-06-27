@@ -2,7 +2,8 @@ FROM ubuntu:latest
 
 LABEL maintainer="maskedzhang"
 LABEL version="0.1.3"
-LABEL description="docker image for milk-v duo"
+LABEL description="MilkV Duo burn image build environment on Ubuntu 22.04""
+
 
 WORKDIR /root/
 RUN apt update && \
