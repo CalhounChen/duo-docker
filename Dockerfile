@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 LABEL maintainer="maskedzhang"
-LABEL version="0.1.1"
+LABEL version="0.1.3"
 LABEL description="docker image for milk-v duo"
 
 WORKDIR /root/
