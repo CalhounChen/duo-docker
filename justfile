@@ -9,7 +9,7 @@ DOCKERHUB_USERNAME:="maskedzhang"
 IMAGE_NAME:="milkv-duo"
 
 # show help info
-help:
+help:clear
 	just -l
 
 # build image from Dockerfile
@@ -26,3 +26,7 @@ version:
 # run the image just built
 run:
 	{{RUNNER}} run --privileged --name duo -it {{IMAGE_NAME}}
+cp-image:
+	podman cp duo:/root/duo-buildroot-sdk/install/soc_cv1800b_milkv_duo_sd/milkv-duo.img  .
+clear:
+	@clear
