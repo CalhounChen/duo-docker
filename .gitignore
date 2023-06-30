@@ -53,3 +53,4 @@ $RECYCLE.BIN/
 
 
 .dockerignore
+*.img
