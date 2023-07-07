@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 LABEL maintainer="calhounchen"
-LABEL version="0.1.6"
+LABEL version="0.1.7"
 LABEL description="MilkV Duo burn image build environment on Ubuntu 22.04"
 
 
@@ -16,7 +16,6 @@ RUN apt update && \
 	mtools cpio zip unzip sudo fdisk udev vim && \
 	apt-get clean -y
 
-WORKDIR /root/
 RUN wget https://www.openssl.org/source/old/1.1.1/openssl-1.1.1k.tar.gz && \
 	tar xf openssl-1.1.1k.tar.gz && \
 	cd /root/openssl-1.1.1k/ && \
@@ -29,13 +28,11 @@ RUN wget https://www.openssl.org/source/old/1.1.1/openssl-1.1.1k.tar.gz && \
 	rm -rf /root/openssl-1.1.1k.tar.gz && \
 	rm -rf /root/openssl-1.1.1k/
 
-WORKDIR /root/
 RUN wget http://sophon-file.sophon.cn/sophon-prod-s3/drive/23/03/07/16/host-tools.tar.gz -q  && \
 	tar xf host-tools.tar.gz && \
 	rm -rf host-tools.tar.gz
 
-WORKDIR /root/
-RUN git clone --depth 1 http://github.com/pengutronix/genimage.git && \
+RUN git clone --branch v16 --depth 1 http://github.com/pengutronix/genimage.git && \
 	cd /root/genimage && \
 	./autogen.sh && \
 	./configure --prefix=/usr/local/ && \
@@ -43,7 +40,6 @@ RUN git clone --depth 1 http://github.com/pengutronix/genimage.git && \
 	make install && \
 	rm -rf /root/genimage/
 
-WORKDIR /root/
 RUN git clone --branch develop --depth 1 http://github.com/milkv-duo/duo-buildroot-sdk.git && \
 	cd /root/duo-buildroot-sdk/ && \
 	ln -s ../host-tools/ ./ 
