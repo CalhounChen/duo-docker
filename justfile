@@ -7,10 +7,21 @@ set shell:=['bash','-c']
 RUNNER:="podman" 
 # RUNNER:="docker" 
 
-# dockerhub username
-DOCKERHUB_USERNAME:="calhounchen"
+# registry name
+REGISTRY:="ghcr.io"
+# REGISTRY:="docker.io"
+
+# registry username
+USER_NAME:="calhounchen"
+
 # image name
 IMAGE_NAME:="milkv-duo"
+
+# image version
+TAG_NAME:="latest"
+
+# container name
+CONTAINER_NAME:="duo"
 
 # show help info
 help:clear
@@ -22,9 +33,9 @@ build-image:clear
 	{{RUNNER}} build -t {{IMAGE_NAME}} -f Dockerfile
 
 alias pull:=pull-image
-# pull image from docker.io [default: latest]
+# pull image from registry [default: latest]
 pull-image:clear
-	{{RUNNER}} pull docker.io/{{DOCKERHUB_USERNAME}}/{{IMAGE_NAME}}
+	{{RUNNER}} pull {{REGISTRY}}/{{USER_NAME}}/{{IMAGE_NAME}}:{{TAG_NAME}}
 
 alias v:=version
 # show {{RUNNER}} version
@@ -34,7 +45,7 @@ alias r:=run
 
 # run the image just built
 run:clear
-	{{RUNNER}} run --privileged --name duo -it {{IMAGE_NAME}}
+	{{RUNNER}} run --privileged --name {{CONTAINER_NAME}} -it {{IMAGE_NAME}}
 
 alias copy:=copy-image
 # copy target file to local disk
