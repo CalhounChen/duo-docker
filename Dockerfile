@@ -1,8 +1,8 @@
 FROM ubuntu:latest
 
 LABEL maintainer="calhounchen"
-LABEL version="0.1.8"
-LABEL description="MilkV Duo burn image build environment on Ubuntu 22.04"
+LABEL version="0.1.9"
+LABEL description="MilkV Duo burn image build environment on Ubuntu 22.04\nhttps://github.com/CalhounChen/duo-docker"
 
 
 WORKDIR /root/
