@@ -1,9 +1,11 @@
 FROM ubuntu:latest
 
-LABEL maintainer="calhounchen"
-LABEL version="0.1.12"
-LABEL org.opencontainers.image.description DESCRIPTION=\
-	"MilkV Duo burn image build environment on Ubuntu 22.04\nhttps://github.com/CalhounChen/duo-docker"
+LABEL org.opencontainers.image.title = "milkv-duo"
+LABEL org.opencontainers.image.version = "0.1.12"
+LABEL org.opencontainers.image.authors = "1137682506@qq.com"
+LABEL org.opencontainers.image.source = "https://github.com/CalhounChen/duo-docker"
+LABEL org.opencontainers.image.licenses = "BSD"
+LABEL org.opencontainers.image.description DESCRIPTION = "MilkV Duo burn image build environment on Ubuntu 22.04"
 
 
 WORKDIR /root/
