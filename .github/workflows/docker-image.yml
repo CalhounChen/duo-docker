@@ -3,15 +3,15 @@ on:
   push:
     tags:
       - 'v[0-9].*'
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'
-        required: true  
-        default: 'warning'
+  # workflow_dispatch:
+  #   inputs:
+  #     logLevel:
+  #       description: 'Log level'
+  #       required: true  
+  #       default: 'warning'
 env:
   GHCR: ghcr.io
-  DOCERHUB: docker.io
+  DOCKERHUB: docker.io
   IMAGE_NAME: calhounchen/milkv-duo
 
 jobs:
@@ -31,7 +31,7 @@ jobs:
     - name: Docker Hub login
       uses: docker/login-action@v2
       with:
-        registry: ${{env.DOCERHUB}}
+        registry: ${{env.DOCKERHUB}}
         username: ${{secrets.DOCKERHUB_USERNAME}}
         password: ${{secrets.DOCKERHUB_TOKEN}}
 
@@ -47,7 +47,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: |
-          ${{env.DOCERHUB}}/${{env.IMAGE_NAME}}
+          ${{env.DOCKERHUB}}/${{env.IMAGE_NAME}}
           ${{env.GHCR}}/${{env.IMAGE_NAME}}
 
     - name: Build and push Docker image
@@ -55,7 +55,6 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64
         push: true
         tags: ${{steps.meta.outputs.tags}}
         labels: ${{steps.meta.outputs.labels}}
