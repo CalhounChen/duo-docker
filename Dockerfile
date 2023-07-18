@@ -19,7 +19,7 @@ RUN apt update && \
 	device-tree-compiler squashfs-tools parted dosfstools texinfo genext2fs \
 	mtools cpio zip unzip sudo fdisk udev vim 
 RUN echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
-RUN apt install libssl1.1 -y && \
+RUN apt update && apt upgrade -y &&apt install libssl1.1 -y && \
 	apt-get clean -y
 # RUN wget https://www.openssl.org/source/old/1.1.1/openssl-1.1.1k.tar.gz && \
 # 	tar xf openssl-1.1.1k.tar.gz && \
