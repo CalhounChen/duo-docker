@@ -13,9 +13,13 @@ RUN echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee 
 
 RUN apt update && \
 	apt upgrade -y && \
-	apt install -y pkg-config build-essential ninja-build automake autoconf libtool wget curl git gcc libssl-dev libssl1.1 bc slib squashfs-tools android-sdk-libsparse-utils jq python3-distutils scons parallel tree python3-dev python3-pip device-tree-compiler ssh cpio fakeroot libncurses5 flex bison libncurses5-dev genext2fs rsync unzip dosfstools mtools tcl openssh-client cmake dialog udev fdisk sudo vim && \
+	apt install -y wget curl git \
+	gcc autoconf automake make cmake ninja-build \
+	python-is-python3 python3 python3-pip python3-dev \
+	dialog bc flex bison libssl-dev libssl1.1 libconfuse-dev libncurses-dev libtool slib rsync pkg-config \
+	device-tree-compiler squashfs-tools parted dosfstools texinfo genext2fs \
+	mtools cpio zip unzip sudo fdisk udev vim && \
 	apt-get clean -y
-
 # RUN wget https://www.openssl.org/source/old/1.1.1/openssl-1.1.1k.tar.gz && \
 # 	tar xf openssl-1.1.1k.tar.gz && \
 # 	cd /root/openssl-1.1.1k/ && \
