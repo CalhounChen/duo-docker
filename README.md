@@ -1,2 +1,2 @@
 # duo-docker
-![workflow](https://github.com/calhounchen/duo-docker/actions/workflows/docker-image.yml/badge.svg)
+[![Docker Image CI](https://github.com/CalhounChen/duo-docker/actions/workflows/docker-image.yml/badge.svg?event=push)](https://github.com/CalhounChen/duo-docker/actions/workflows/docker-image.yml)
