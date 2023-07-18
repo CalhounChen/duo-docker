@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 LABEL org.opencontainers.image.title = "milkv-duo"
-LABEL org.opencontainers.image.version = "0.1.15"
+LABEL org.opencontainers.image.version = "0.1.16"
 LABEL org.opencontainers.image.authors = "1137682506@qq.com"
 LABEL org.opencontainers.image.source = "https://github.com/CalhounChen/duo-docker"
 LABEL org.opencontainers.image.licenses = "BSD"
@@ -9,16 +9,17 @@ LABEL org.opencontainers.image.description DESCRIPTION = "MilkV Duo burn image b
 
 
 WORKDIR /root/
-RUN echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
 
 RUN apt update && \
 	apt upgrade -y && \
 	apt install -y wget curl git \
 	gcc autoconf automake make cmake ninja-build \
 	python-is-python3 python3 python3-pip python3-dev \
-	dialog bc flex bison libssl-dev libssl1.1 libconfuse-dev libncurses-dev libtool slib rsync pkg-config \
+	dialog bc flex bison libssl-dev libconfuse-dev libncurses-dev libtool slib rsync pkg-config \
 	device-tree-compiler squashfs-tools parted dosfstools texinfo genext2fs \
-	mtools cpio zip unzip sudo fdisk udev vim && \
+	mtools cpio zip unzip sudo fdisk udev vim 
+RUN echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
+RUN apt install libssl1.1 -y && \
 	apt-get clean -y
 # RUN wget https://www.openssl.org/source/old/1.1.1/openssl-1.1.1k.tar.gz && \
 # 	tar xf openssl-1.1.1k.tar.gz && \
