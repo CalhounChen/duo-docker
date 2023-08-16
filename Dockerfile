@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 LABEL org.opencontainers.image.title = "milkv-duo"
-LABEL org.opencontainers.image.version = "0.1.16"
+LABEL org.opencontainers.image.version = "0.1.17"
 LABEL org.opencontainers.image.authors = "1137682506@qq.com"
 LABEL org.opencontainers.image.source = "https://github.com/CalhounChen/duo-docker"
 LABEL org.opencontainers.image.licenses = "BSD"
